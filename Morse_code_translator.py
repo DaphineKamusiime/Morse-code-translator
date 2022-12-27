@@ -1,6 +1,6 @@
 #implementing Morse Code Translator
 #creating a morse code chart
-MORSE_CODE_DICT = { 'A':'.-', 'B':'-...',
+morse_code_list = { 'A':'.-', 'B':'-...',
                     'C':'-.-.', 'D':'-..', 'E':'.',
                     'F':'..-.', 'G':'--.', 'H':'....',
                     'I':'..', 'J':'.---', 'K':'-.-',
@@ -24,7 +24,7 @@ def encrypt(message):   # message stores the string to be encoded or decoded
         if letter != ' ':
  # Looks up the chart and adds the corresponding morse code with a space to separate morse codes for different characters
             
-            cipher += MORSE_CODE_DICT[letter] + ' '
+            cipher += morse_code_list [letter] + ' '
         else:
             # 1 space indicates different characters
             # and 2 indicates different words
@@ -64,7 +64,7 @@ def decrypt(message):
             else:
  
                 # accessing the keys using their values (reverse of encryption)
-                decipher += list(MORSE_CODE_DICT.keys())[list(MORSE_CODE_DICT.values()).index(citext)]
+                decipher += list(morse_code_list .keys())[list(morse_code_list .values()).index(citext)]
                 citext = ''
  
     return decipher
@@ -72,11 +72,24 @@ def decrypt(message):
 def main():
     message = "HELLO WORLD 1234"
     result = encrypt(message.upper())
+    print("Before encryption:   "+message)
     print ("Encrypted message:  "+result)
  
     message = "-.. .- .--. .... -.-- -.  ----- ----."
     result = decrypt(message)
     print ("Decrypted message:  " + result)
- 
+    
+    #allowing user input
+    
+    message1 = input(print("Enter any message you wish to encrypt:  "))
+    result1 = encrypt(message.upper())
+    print("Before encryption:   "+message1)
+    print ("Encrypted message:  "+result1)
+    
+    message2 = input(print("Enter any message you wish to decrypt:  "))
+    result2 = decrypt(message.upper())
+    print("Before decryption:   "+message2)
+    print ("Decrypted message:  "+result2)
+    
 if __name__ == '__main__':
     main()
